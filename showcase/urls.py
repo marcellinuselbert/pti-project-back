@@ -1,9 +1,11 @@
 from django.urls import path
+from .views import *
 
-from . import views
+app_name = 'showcase'
+
 urlpatterns = [
-  path('', views.FilmList.as_view()),
-  path('<int:id>', views.FilmDetail.as_view()),
-  path('<int:id>/<str:action>',views.FilmLikeDislike.as_view()),
-  path('search/',views.FilmSearchFilter.as_view())
+  path('', FilmList.as_view()),
+  path('<int:id>', FilmDetail.as_view(), name='detail'),
+  path('<int:pk>/<str:action>',FilmLikeDislike.as_view()),
+  path('search',FilmSearchFilter.as_view())
 ]
